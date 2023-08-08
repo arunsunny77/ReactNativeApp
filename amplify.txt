@@ -1,0 +1,14 @@
+amplify configure : 
+access key ID : AKIARPRNXR6PV3PVWVNH
+secret access key : 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
+
+├──────────┼────────────────┼───────────┼───────────────────┤
+│ Category │ Resource name  │ Operation │ Provider plugin   │
+├──────────┼────────────────┼───────────┼───────────────────┤
+│ Api      │ reactnativeapp │ No Change │ awscloudformation │
+└──────────┴────────────────┴───────────┴───────────────────┘
+
+GraphQL endpoint: https://f4dnxbxoqjd7da4gafqu2rny3m.appsync-api.us-east-1.amazonaws.com/graphql
+GraphQL API KEY: da2-ydxn4mwgsra4zofy7w7b6nn33u
+
+GraphQL transformer version: 2

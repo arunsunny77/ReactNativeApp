@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-reactnativeapp-dev-141241-authRole",
+      "UnauthRoleArn": "arn:aws:iam::102101389215:role/amplify-reactnativeapp-dev-141241-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::102101389215:role/amplify-reactnativeapp-dev-141241-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-reactnativeapp-dev-141241-deployment",
+      "UnauthRoleName": "amplify-reactnativeapp-dev-141241-unauthRole",
+      "StackName": "amplify-reactnativeapp-dev-141241",
+      "StackId": "arn:aws:cloudformation:us-east-1:102101389215:stack/amplify-reactnativeapp-dev-141241/8b875410-35c7-11ee-8712-0a753a369ebb",
+      "AmplifyAppId": "d1kcdgt1wjn0lt"
+    },
+    "categories": {
+      "api": {
+        "reactnativeapp": {}
+      }
+    }
+  }
+}
