@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
+import {NativeBaseProvider, Text, Box, ScrollView} from 'native-base';
 import {
   StyleSheet,
-  Text,
   View,
   TextInput,
   Pressable,
@@ -16,10 +16,10 @@ import {
 } from '@aws-amplify/ui-react-native';
 
 // retrieves only the current value of 'user' from 'useAuthenticator'
-const userSelector = (context) => [context.user]
+const userSelector = context => [context.user];
 
 const SignOutButton = () => {
-  const { user, signOut } = useAuthenticator(userSelector);
+  const {user, signOut} = useAuthenticator(userSelector);
   return (
     <Pressable onPress={signOut} style={styles.buttonContainer}>
       <Text style={styles.buttonText}>
@@ -36,14 +36,14 @@ const App = () => {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    fetchTodos();
+    fetchTodo();
   }, []);
 
   function setInput(key, value) {
     setFormState({...formState, [key]: value});
   }
 
-  async function fetchTodos() {
+  async function fetchTodo() {
     try {
       const todoData = await API.graphql(graphqlOperation(listTodos));
       const todos = todoData.data.listTodos.items;
@@ -66,32 +66,39 @@ const App = () => {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.container}>
-        <SignOutButton />
-        <TextInput
-          onChangeText={value => setInput('name', value)}
-          style={styles.input}
-          value={formState.name}
-          placeholder="Name"
-        />
-        <TextInput
-          onChangeText={value => setInput('description', value)}
-          style={styles.input}
-          value={formState.description}
-          placeholder="Description"
-        />
-        <Pressable onPress={addTodo} style={styles.buttonContainer}>
-          <Text style={styles.buttonText}>Create todo</Text>
-        </Pressable>
-        {todos.map((todo, index) => (
-          <View key={todo.id ? todo.id : index} style={styles.todo}>
-            <Text style={styles.todoName}>{todo.name}</Text>
-            <Text style={styles.todoDescription}>{todo.description}</Text>
-          </View>
-        ))}
-      </View>
-    </SafeAreaView>
+    <NativeBaseProvider>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
+          <SignOutButton />
+          <Box flex={1} bg="#fff" alignItems="center" justifyContent="center">
+            <Text>Example of NativeBase with React Native</Text>
+          </Box>
+          <TextInput
+            onChangeText={value => setInput('name', value)}
+            style={styles.input}
+            value={formState.name}
+            placeholder="Name"
+          />
+          <TextInput
+            onChangeText={value => setInput('description', value)}
+            style={styles.input}
+            value={formState.description}
+            placeholder="Description"
+          />
+          <Pressable onPress={addTodo} style={styles.buttonContainer}>
+            <Text style={styles.buttonText}>Create todo</Text>
+          </Pressable>
+          <ScrollView showsVerticalScrollIndicator={false} marginTop={10}>
+            {todos.map((todo, index) => (
+              <View key={todo.id ? todo.id : index} style={styles.todo}>
+                <Text style={styles.todoName}>{todo.name}</Text>
+                <Text style={styles.todoDescription}>{todo.description}</Text>
+              </View>
+            ))}
+          </ScrollView>
+        </View>
+      </SafeAreaView>
+    </NativeBaseProvider>
   );
 };
 
